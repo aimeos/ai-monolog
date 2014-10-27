@@ -1,0 +1,20 @@
+{
+	"name": "aimeos/ai-monolog",
+	"description": "Aimeos Monolog extension",
+	"type": "aimeos-extension",
+	"support": {
+		"source": "https://github.com/aimeos/ai-monolog",
+		"issues": "https://github.com/aimeos/ai-monolog/issues"
+	},
+	"require": {
+		"monolog/monolog": "1.*"
+	},
+	"autoload": {
+		"psr-0": {
+			"MW": "lib/custom/src"
+		},
+		"classmap": [
+			"lib/custom/src"
+		]
+	}
+}
