@@ -52,6 +52,19 @@ class MW_Logger_MonologTest extends MW_Unittest_Testcase
 	}
 
 
+	public function testLoglevels()
+	{
+		$this->_object->log( 'EMERG', MW_Logger_Abstract::EMERG );
+		$this->_object->log( 'ALERT', MW_Logger_Abstract::ALERT );
+		$this->_object->log( 'CRITICAL', MW_Logger_Abstract::CRITICAL );
+		$this->_object->log( 'ERROR', MW_Logger_Abstract::ERROR );
+		$this->_object->log( 'WARNING', MW_Logger_Abstract::WARNING );
+		$this->_object->log( 'NOTICE', MW_Logger_Abstract::NOTICE );
+		$this->_object->log( 'INFO', MW_Logger_Abstract::INFO );
+		$this->_object->log( 'DEBUG', MW_Logger_Abstract::DEBUG );
+	}
+
+
 	public function testNonScalarLog()
 	{
 		$this->_object->log( array( 'error', 'error2', 2 ) );
