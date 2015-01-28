@@ -15,7 +15,7 @@ before_script:
   - composer require "monolog/monolog" "1.*"
 
 script:
-  - vendor/bin/phing -Ddir=ext/ai-monolog testext checkext
+  - vendor/bin/phing -Ddir=ext/ai-monolog coverageext checkext
 
 after_success:
   - php vendor/bin/coveralls -c ext/ai-monolog/.coveralls.yml
