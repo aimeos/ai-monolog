@@ -84,4 +84,17 @@ class MW_Logger_MonologTest extends MW_Unittest_Testcase
 		$this->setExpectedException( 'MW_Logger_Exception' );
 		$this->_object->log( 'error', -1 );
 	}
+
+
+	public function testFacility()
+	{
+		$log = new \Monolog\Logger( 'test' );
+		$log->pushHandler( new Monolog\Handler\StreamHandler( 'monolog.log', \Monolog\Logger::INFO ) );
+
+		$this->_object = new MW_Logger_Monolog( $log, array( 'test' ) );
+
+		$this->_object->log( 'error', MW_Logger_Abstract::ERR );
+
+		$this->assertFalse( file_exists( 'monolog.log' ) );
+	}
 }
