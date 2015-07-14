@@ -11,7 +11,7 @@
 
 The Aimeos web shop components can integrate into almost any PHP application and uses the infrastructure of the application for building URLs, caching content, configuration settings, logging messages, session handling, sending e-mails or handling translations.
 
-The ai-monolog extension integrates the PHP Monolog library for logging messages into Aimeos. It's useful if your application already uses Monolog for loggin and offers access to a Monolog object that can be used together with this extension.
+The ai-monolog extension integrates the PHP Monolog library for logging messages into Aimeos. It's useful if your application already uses Monolog for logging and offers access to a Monolog object that can be used together with this extension.
 
 ## Table of content
 
