@@ -1,7 +1,7 @@
 {
 	"name": "aimeos/ai-monolog",
-	"description": "Aimeos Monolog extension",
-	"keywords": ["aimeos", "adapter", "monolog", "log"],
+	"description": "Monolog adapter for Aimeos web shops and e-commerce solutions",
+	"keywords": ["aimeos", "adapter", "monolog", "log", "shop", "e-commerce"],
 	"homepage": "https://aimeos.org",
 	"type": "aimeos-extension",
 	"license": "LGPL-3.0",
