@@ -18,8 +18,8 @@ class MW_Logger_Monolog
 	extends MW_Logger_Abstract
 	implements MW_Logger_Interface
 {
-	private $_logger;
-	private $_facilities;
+	private $logger;
+	private $facilities;
 
 
 	/**
@@ -30,8 +30,8 @@ class MW_Logger_Monolog
 	 */
 	public function __construct( \Monolog\Logger $logger, array $facilities = null )
 	{
-		$this->_logger = $logger;
-		$this->_facilities = $facilities;
+		$this->logger = $logger;
+		$this->facilities = $facilities;
 	}
 
 
@@ -48,13 +48,13 @@ class MW_Logger_Monolog
 	{
 		try
 		{
-			if( $this->_facilities === null || in_array( $facility, $this->_facilities ) )
+			if( $this->facilities === null || in_array( $facility, $this->facilities ) )
 			{
 				if( !is_scalar( $message ) ) {
 					$message = json_encode( $message );
 				}
 
-				$this->_logger->log( $this->_translatePriority( $priority ), $message );
+				$this->logger->log( $this->translatePriority( $priority ), $message );
 			}
 		}
 		catch( Exception $e )	{
@@ -70,7 +70,7 @@ class MW_Logger_Monolog
 	 * @return integer Log level from Monolog\Logger
 	 * @throws MW_Logger_Exception If log level is unknown
 	 */
-	protected function _translatePriority( $priority )
+	protected function translatePriority( $priority )
 	{
 		switch( $priority )
 		{
