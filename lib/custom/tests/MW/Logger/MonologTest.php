@@ -9,7 +9,7 @@
 /**
  * Test class for MW_Logger_Monolog.
  */
-class MW_Logger_MonologTest extends MW_Unittest_Testcase
+class MW_Logger_MonologTest extends PHPUnit_Framework_TestCase
 {
 	private $object;
 
