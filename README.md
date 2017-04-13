@@ -50,7 +50,7 @@ $context->setLogger( $log );
 
 ## License
 
-The Aimeos ai-swiftmailer extension is licensed under the terms of the LGPLv3 license and is available for free.
+The Aimeos ai-monolog extension is licensed under the terms of the LGPLv3 license and is available for free.
 
 ## Links
 
