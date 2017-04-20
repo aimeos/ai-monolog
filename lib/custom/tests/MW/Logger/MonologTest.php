@@ -12,7 +12,7 @@ namespace Aimeos\MW\Logger;
 /**
  * Test class for \Aimeos\MW\Logger\Monolog.
  */
-class MonologTest extends \PHPUnit_Framework_TestCase
+class MonologTest extends \PHPUnit\Framework\TestCase
 {
 	private $object;
 
