@@ -84,7 +84,7 @@ class MonologTest extends \PHPUnit\Framework\TestCase
 
 	public function testBadPriority()
 	{
-		$this->expectException( '\\Aimeos\\MW\\Logger\\Exception' );
+		$this->setExpectedException( '\\Aimeos\\MW\\Logger\\Exception' );
 		$this->object->log( 'error', -1 );
 	}
 
