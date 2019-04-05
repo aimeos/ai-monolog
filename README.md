@@ -30,7 +30,7 @@ php -r "readfile('https://getcomposer.org/installer');" | php -- --filename=comp
 Add the ai-monolog extension to the "require" section of your ```composer.json``` file:
 ```
 "require": [
-    "aimeos/ai-monolog": "dev-master",
+    "aimeos/ai-monolog": "~2019.04",
     ...
 ],
 ```
