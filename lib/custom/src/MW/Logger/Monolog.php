@@ -42,12 +42,13 @@ class Monolog
 	 * Writes a message to the configured log facility.
 	 *
 	 * @param string|array|object $message Message text that should be written to the log facility
-	 * @param integer $priority Priority of the message for filtering
+	 * @param int $priority Priority of the message for filtering
 	 * @param string $facility Facility for logging different types of messages (e.g. message, auth, user, changelog)
-	 * @throws \Aimeos\MW\Logger\Exception If an error occurs in Zend_Log
+	 * @return \Aimeos\MW\Logger\Iface Logger object for method chaining
+	 * @throws \Aimeos\MW\Logger\Exception If an error occurs
 	 * @see \Aimeos\MW\Logger\Base for available log level constants
 	 */
-	public function log( $message, $priority = \Aimeos\MW\Logger\Base::ERR, $facility = 'message' )
+	public function log( $message, int $priority = Base::ERR, string $facility = 'message' ) : Iface
 	{
 		try
 		{
@@ -57,44 +58,38 @@ class Monolog
 					$message = json_encode( $message );
 				}
 
-				$this->logger->log( $this->translatePriority( $priority ), $message );
+				$this->logger->log( $this->getLogLevel( $priority ), $message );
 			}
 		}
 		catch( \Exception $e )	{
-			throw new \Aimeos\MW\Logger\Exception( $e->getMessage(), $e->getCode(), $e );
+			throw new Exception( $e->getMessage(), $e->getCode(), $e );
 		}
+
+		return $this;
 	}
 
 
 	/**
-	 * Translates the log priority to the log levels of Monolog.
+	 * Checks if the given log constant is valid
 	 *
-	 * @param integer $priority Log level from \Aimeos\MW\Logger\Base
-	 * @return integer Log level from Monolog\Logger
-	 * @throws \Aimeos\MW\Logger\Exception If log level is unknown
+	 * @param int $level Log constant
+	 * @return mixed Log level
+	 * @throws \Aimeos\MW\Logger\Exception If log constant is unknown
 	 */
-	protected function translatePriority( $priority )
+	protected function getLogLevel( int $level )
 	{
-		switch( $priority )
+		switch( $level )
 		{
-			case \Aimeos\MW\Logger\Base::EMERG:
-				return \Monolog\Logger::EMERGENCY;
-			case \Aimeos\MW\Logger\Base::ALERT:
-				return \Monolog\Logger::ALERT;
-			case \Aimeos\MW\Logger\Base::CRIT:
-				return \Monolog\Logger::CRITICAL;
-			case \Aimeos\MW\Logger\Base::ERR:
-				return \Monolog\Logger::ERROR;
-			case \Aimeos\MW\Logger\Base::WARN:
-				return \Monolog\Logger::WARNING;
-			case \Aimeos\MW\Logger\Base::NOTICE:
-				return \Monolog\Logger::NOTICE;
-			case \Aimeos\MW\Logger\Base::INFO:
-				return \Monolog\Logger::INFO;
-			case \Aimeos\MW\Logger\Base::DEBUG:
-				return \Monolog\Logger::DEBUG;
-			default:
-				throw new \Aimeos\MW\Logger\Exception( 'Invalid log level' );
+			case \Aimeos\MW\Logger\Base::EMERG: return \Monolog\Logger::EMERGENCY;
+			case \Aimeos\MW\Logger\Base::ALERT: return \Monolog\Logger::ALERT;
+			case \Aimeos\MW\Logger\Base::CRIT: return \Monolog\Logger::CRITICAL;
+			case \Aimeos\MW\Logger\Base::ERR: return \Monolog\Logger::ERROR;
+			case \Aimeos\MW\Logger\Base::WARN: return \Monolog\Logger::WARNING;
+			case \Aimeos\MW\Logger\Base::NOTICE: return \Monolog\Logger::NOTICE;
+			case \Aimeos\MW\Logger\Base::INFO: return \Monolog\Logger::INFO;
+			case \Aimeos\MW\Logger\Base::DEBUG: return \Monolog\Logger::DEBUG;
 		}
+
+		throw new \Aimeos\MW\Logger\Exception( 'Invalid log level' );
 	}
 }
