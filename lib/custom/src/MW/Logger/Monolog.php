@@ -61,7 +61,7 @@ class Monolog
 				$this->logger->log( $this->getLogLevel( $priority ), $message );
 			}
 		}
-		catch( \Exception $e )	{
+		catch( \Exception $e ) {
 			throw new Exception( $e->getMessage(), $e->getCode(), $e );
 		}
 
