@@ -9,7 +9,7 @@
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/aimeos/ai-monolog/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/aimeos/ai-monolog/?branch=master)
 [![License](https://poser.pugx.org/aimeos/ai-monolog/license.svg)](https://packagist.org/packages/aimeos/ai-monolog)
 
-The Aimeos web shop components can integrate into almost any PHP application and uses the infrastructure of the application for building URLs, caching content, configuration settings, logging messages, session handling, sending e-mails or handling translations.
+The Aimeos ecommerce components can integrate into almost any PHP application and uses the infrastructure of the application for building URLs, caching content, configuration settings, logging messages, session handling, sending e-mails or handling translations.
 
 The ai-monolog extension integrates the PHP Monolog library for logging messages into Aimeos. It's useful if your application already uses Monolog for logging and offers access to a Monolog object that can be used together with this extension.
 
@@ -22,21 +22,16 @@ The ai-monolog extension integrates the PHP Monolog library for logging messages
 
 ## Installation
 
-To allow the Aimeos web shop components accessing the log infrastructure of your own framework or application, you have to install the adapter first. As every Aimeos extension, the easiest way is to install it via [composer](https://getcomposer.org/). If you don't have composer installed yet, you can execute this string on the command line to download it:
-```
+To allow the Aimeos ecommerce components accessing the log infrastructure of your own framework or application, you have to install the adapter first. As every Aimeos extension, the easiest way is to install it via [composer](https://getcomposer.org/). If you don't have composer installed yet, you can execute this string on the command line to download it:
+
+```bash
 php -r "readfile('https://getcomposer.org/installer');" | php -- --filename=composer
 ```
 
-Add the ai-monolog extension to the "require" section of your ```composer.json``` file:
-```
-"require": [
-    "aimeos/ai-monolog": "dev-master",
-    ...
-],
-```
-If you don't want to use the latest version, you can also install any release. The list of releases is available at [Packagist](https://packagist.org/packages/aimeos/ai-monolog). Afterwards you only need to execute the composer update command on the command line:
-```
-composer update
+Install the Monolog adapter using:
+
+```bash
+composer req aimeos/ai-monolog
 ```
 
 ## Setup
@@ -44,7 +39,7 @@ composer update
 Now add the Monolog object to the Aimeos context, which you have to create to get the Aimeos components running:
 ```
 // $logger is a Monolog instance
-$log = new MW_Logger_Monolog( $logger );
+$log = new \Aimeos\MW\Logger\Monolog( $logger );
 $context->setLogger( $log );
 ```
 
