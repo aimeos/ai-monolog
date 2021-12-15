@@ -42,14 +42,14 @@ class MonologTest extends \PHPUnit\Framework\TestCase
 
 	public function testLoglevels()
 	{
-		$this->object->log( 'EMERGENCY', \Aimeos\MW\Logger\Base::EMERG );
-		$this->object->log( 'ALERT', \Aimeos\MW\Logger\Base::ALERT );
-		$this->object->log( 'CRITICAL', \Aimeos\MW\Logger\Base::CRIT );
-		$this->object->log( 'ERROR', \Aimeos\MW\Logger\Base::ERR );
-		$this->object->log( 'WARNING', \Aimeos\MW\Logger\Base::WARN );
-		$this->object->log( 'NOTICE', \Aimeos\MW\Logger\Base::NOTICE );
-		$this->object->log( 'INFO', \Aimeos\MW\Logger\Base::INFO );
-		$this->object->log( 'DEBUG', \Aimeos\MW\Logger\Base::DEBUG );
+		$this->object->log( 'EMERGENCY', \Aimeos\MW\Logger\Iface::EMERG );
+		$this->object->log( 'ALERT', \Aimeos\MW\Logger\Iface::ALERT );
+		$this->object->log( 'CRITICAL', \Aimeos\MW\Logger\Iface::CRIT );
+		$this->object->log( 'ERROR', \Aimeos\MW\Logger\Iface::ERR );
+		$this->object->log( 'WARNING', \Aimeos\MW\Logger\Iface::WARN );
+		$this->object->log( 'NOTICE', \Aimeos\MW\Logger\Iface::NOTICE );
+		$this->object->log( 'INFO', \Aimeos\MW\Logger\Iface::INFO );
+		$this->object->log( 'DEBUG', \Aimeos\MW\Logger\Iface::DEBUG );
 
 		$content = file_get_contents( 'monolog.log' );
 
@@ -73,7 +73,7 @@ class MonologTest extends \PHPUnit\Framework\TestCase
 
 	public function testLogDebug()
 	{
-		$this->object->log( 'debug', \Aimeos\MW\Logger\Base::DEBUG );
+		$this->object->log( 'debug', \Aimeos\MW\Logger\Iface::DEBUG );
 		$this->assertFalse( file_exists( 'monolog.log' ) );
 	}
 
@@ -92,7 +92,7 @@ class MonologTest extends \PHPUnit\Framework\TestCase
 
 		$this->object = new \Aimeos\MW\Logger\Monolog( $log, array( 'test' ) );
 
-		$this->assertInstanceOf( \Aimeos\MW\Logger\Iface::class, $this->object->log( 'error', \Aimeos\MW\Logger\Base::ERR ) );
+		$this->assertInstanceOf( \Aimeos\MW\Logger\Iface::class, $this->object->log( 'error', \Aimeos\MW\Logger\Iface::ERR ) );
 
 		$this->assertFalse( file_exists( 'monolog.log' ) );
 	}

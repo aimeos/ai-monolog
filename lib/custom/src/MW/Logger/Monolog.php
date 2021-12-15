@@ -17,10 +17,11 @@ namespace Aimeos\MW\Logger;
  * @package MW
  * @subpackage Logger
  */
-class Monolog
-	extends \Aimeos\MW\Logger\Base
-	implements \Aimeos\MW\Logger\Iface
+class Monolog implements Iface
 {
+	use Traits;
+
+
 	private $logger;
 	private $facilities;
 
@@ -46,9 +47,9 @@ class Monolog
 	 * @param string $facility Facility for logging different types of messages (e.g. message, auth, user, changelog)
 	 * @return \Aimeos\MW\Logger\Iface Logger object for method chaining
 	 * @throws \Aimeos\MW\Logger\Exception If an error occurs
-	 * @see \Aimeos\MW\Logger\Base for available log level constants
+	 * @see \Aimeos\MW\Logger\Iface for available log level constants
 	 */
-	public function log( $message, int $priority = Base::ERR, string $facility = 'message' ) : Iface
+	public function log( $message, int $priority = Iface::ERR, string $facility = 'message' ) : Iface
 	{
 		try
 		{
@@ -80,14 +81,14 @@ class Monolog
 	{
 		switch( $level )
 		{
-			case \Aimeos\MW\Logger\Base::EMERG: return \Monolog\Logger::EMERGENCY;
-			case \Aimeos\MW\Logger\Base::ALERT: return \Monolog\Logger::ALERT;
-			case \Aimeos\MW\Logger\Base::CRIT: return \Monolog\Logger::CRITICAL;
-			case \Aimeos\MW\Logger\Base::ERR: return \Monolog\Logger::ERROR;
-			case \Aimeos\MW\Logger\Base::WARN: return \Monolog\Logger::WARNING;
-			case \Aimeos\MW\Logger\Base::NOTICE: return \Monolog\Logger::NOTICE;
-			case \Aimeos\MW\Logger\Base::INFO: return \Monolog\Logger::INFO;
-			case \Aimeos\MW\Logger\Base::DEBUG: return \Monolog\Logger::DEBUG;
+			case \Aimeos\MW\Logger\Iface::EMERG: return \Monolog\Logger::EMERGENCY;
+			case \Aimeos\MW\Logger\Iface::ALERT: return \Monolog\Logger::ALERT;
+			case \Aimeos\MW\Logger\Iface::CRIT: return \Monolog\Logger::CRITICAL;
+			case \Aimeos\MW\Logger\Iface::ERR: return \Monolog\Logger::ERROR;
+			case \Aimeos\MW\Logger\Iface::WARN: return \Monolog\Logger::WARNING;
+			case \Aimeos\MW\Logger\Iface::NOTICE: return \Monolog\Logger::NOTICE;
+			case \Aimeos\MW\Logger\Iface::INFO: return \Monolog\Logger::INFO;
+			case \Aimeos\MW\Logger\Iface::DEBUG: return \Monolog\Logger::DEBUG;
 		}
 
 		throw new \Aimeos\MW\Logger\Exception( 'Invalid log level' );
