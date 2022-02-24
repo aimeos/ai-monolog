@@ -52,38 +52,13 @@ class TestHelper
 	private static function createContext( $site )
 	{
 		$ctx = new \Aimeos\MShop\Context\Item\Standard();
-		$aimeos = self::getAimeos();
-
+		$ctx->setEditor( 'ai-monolog:lib/custom' );
 
 		$paths = $aimeos->getConfigPaths( 'mysql' );
 		$paths[] = dirname( __FILE__ ) . DIRECTORY_SEPARATOR . 'config';
 
 		$conf = new \Aimeos\MW\Config\PHPArray( [], $paths );
 		$ctx->setConfig( $conf );
-
-
-		$dbm = new \Aimeos\MW\DB\Manager\PDO( $conf );
-		$ctx->setDatabaseManager( $dbm );
-
-
-		$logger = new \Aimeos\MW\Logger\File( $site . '.log', \Aimeos\MW\Logger\Iface::DEBUG );
-		$ctx->setLogger( $logger );
-
-
-		$i18n = new \Aimeos\MW\Translation\None( 'de' );
-		$ctx->setI18n( array( 'de' => $i18n ) );
-
-
-		$session = new \Aimeos\Base\Session\None();
-		$ctx->setSession( $session );
-
-
-		$localeManager = \Aimeos\MShop\Locale\Manager\Factory::create( $ctx );
-		$localeItem = $localeManager->bootstrap( $site, '', '', false );
-
-		$ctx->setLocale( $localeItem );
-
-		$ctx->setEditor( 'ai-monolog:lib/custom' );
 
 		return $ctx;
 	}
