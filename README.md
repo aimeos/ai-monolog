@@ -39,7 +39,7 @@ composer req aimeos/ai-monolog
 Now add the Monolog object to the Aimeos context, which you have to create to get the Aimeos components running:
 ```
 // $logger is a Monolog instance
-$log = new \Aimeos\MW\Logger\Monolog( $logger );
+$log = new \Aimeos\Base\Logger\Monolog( $logger );
 $context->setLogger( $log );
 ```
 
