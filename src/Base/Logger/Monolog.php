@@ -29,7 +29,7 @@ class Monolog implements Iface
 	/**
 	 * Initializes the logger object.
 	 *
-	 * @param Monolog\Logger $logger Monolog logger object
+	 * @param \Monolog\Logger $logger Monolog logger object
 	 * @param array|null $facilities Facilities for which messages should be logged
 	 */
 	public function __construct( \Monolog\Logger $logger, array $facilities = null )
@@ -62,7 +62,8 @@ class Monolog implements Iface
 				$this->logger->log( $this->getLogLevel( $priority ), $message );
 			}
 		}
-		catch( \Exception $e ) {
+		catch( \Exception $e )
+		{
 			throw new Exception( $e->getMessage(), $e->getCode(), $e );
 		}
 
