@@ -106,7 +106,7 @@ jobs:
           key: php81-{{ checksum "composer.json" }}
           paths: [./vendor]
       - run: ./vendor/bin/phing -Ddir=ext/ai-monolog coverageext
-      - run: ./vendor/bin/php-coveralls -x ext/ai-monolog/lib/custom/tests/coverage.xml -vvv
+      - run: ./vendor/bin/php-coveralls -x ext/ai-monolog/tests/coverage.xml -vvv
 
 workflows:
   version: 2

@@ -1,6 +1,6 @@
 {
 	"name": "aimeos/ai-monolog",
-	"description": "Monolog adapter for Aimeos web shops and e-commerce solutions",
+	"description": "Monolog adapter for Aimeos e-commerce solutions",
 	"keywords": ["aimeos", "adapter", "monolog", "log", "shop", "e-commerce"],
 	"homepage": "https://aimeos.org/",
 	"type": "aimeos-extension",
@@ -23,10 +23,18 @@
 	},
 	"autoload": {
 		"psr-4": {
-			"Aimeos\\MW\\": "lib/custom/src/MW"
+			"Aimeos\\": "src"
 		},
 		"classmap": [
-			"lib/custom/src"
+			"src"
+		]
+	},
+	"autoload-dev": {
+		"psr-4": {
+			"Aimeos\\": "tests"
+		},
+		"classmap": [
+			"tests"
 		]
 	}
 }

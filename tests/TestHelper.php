@@ -20,15 +20,14 @@ class TestHelper
 	}
 
 
-	private static function getAimeos()
+	public static function getAimeos()
 	{
 		if( !isset( self::$aimeos ) )
 		{
 			require_once 'Bootstrap.php';
 			spl_autoload_register( 'Aimeos\\Bootstrap::autoload' );
 
-			$extdir = dirname( dirname( dirname( dirname( __FILE__ ) ) ) );
-			self::$aimeos = new \Aimeos\Bootstrap( array( $extdir ), false );
+			self::$aimeos = new \Aimeos\Bootstrap();
 		}
 
 		return self::$aimeos;
