@@ -105,6 +105,23 @@ jobs:
       - save_cache:
           key: php81-{{ checksum "composer.json" }}
           paths: [./vendor]
+      - run: ./vendor/bin/phing -Ddir=ext/ai-monolog testext
+
+  "php-82":
+    docker:
+      - image: aimeos/ci-php:8.2
+    steps:
+      - checkout
+      - run: git clone --depth=50 --branch=master https://github.com/aimeos/aimeos-core ../aimeos-core
+      - run: cd .. && mv project aimeos-core/ext/ai-monolog && mv aimeos-core project && cd project
+      - restore_cache:
+          keys:
+            - php82-{{ checksum "composer.json" }}
+      - run: composer req --no-update monolog/monolog:~1.0
+      - run: composer update -n --prefer-dist
+      - save_cache:
+          key: php82-{{ checksum "composer.json" }}
+          paths: [./vendor]
       - run: ./vendor/bin/phing -Ddir=ext/ai-monolog coverageext
       - run: ./vendor/bin/php-coveralls --root_dir ext/ai-monolog -o coveralls.json -vvv -x tests/coverage.xml
 
@@ -118,3 +135,4 @@ workflows:
       - "php-74"
       - "php-80"
       - "php-81"
+      - "php-82"
