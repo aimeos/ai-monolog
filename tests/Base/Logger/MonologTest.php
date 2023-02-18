@@ -36,7 +36,7 @@ class MonologTest extends \PHPUnit\Framework\TestCase
 	public function testLog()
 	{
 		$this->assertInstanceOf( \Aimeos\Base\Logger\Iface::class, $this->object->log( 'error' ) );
-		$this->assertRegExp( '/^\[[^\]]+\] test.ERROR: error/', file_get_contents( 'monolog.log' ) );
+		$this->assertMatchesRegularExpression( '/^\[[^\]]+\] test.ERROR: error/', file_get_contents( 'monolog.log' ) );
 	}
 
 
@@ -67,7 +67,7 @@ class MonologTest extends \PHPUnit\Framework\TestCase
 	public function testNonScalarLog()
 	{
 		$this->assertInstanceOf( \Aimeos\Base\Logger\Iface::class, $this->object->log( array( 'error', 'error2', 2 ) ) );
-		$this->assertRegExp( '/^\[[^\]]+\] test.ERROR: \["error","error2",2\]/', file_get_contents( 'monolog.log' ) );
+		$this->assertMatchesRegularExpression( '/^\[[^\]]+\] test.ERROR: \["error","error2",2\]/', file_get_contents( 'monolog.log' ) );
 	}
 
 
