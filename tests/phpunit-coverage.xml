@@ -8,5 +8,4 @@
       <clover outputFile="coverage.xml"/>
     </report>
   </coverage>
-  <logging/>
 </phpunit>
