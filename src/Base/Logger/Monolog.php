@@ -22,8 +22,8 @@ class Monolog implements Iface
 	use Traits;
 
 
-	private $logger;
-	private $facilities;
+	private \Monolog\Logger $logger;
+	private ?array $facilities;
 
 
 	/**
