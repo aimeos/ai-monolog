@@ -32,7 +32,7 @@ class Monolog implements Iface
 	 * @param \Monolog\Logger $logger Monolog logger object
 	 * @param array|null $facilities Facilities for which messages should be logged
 	 */
-	public function __construct( \Monolog\Logger $logger, array $facilities = null )
+	public function __construct( \Monolog\Logger $logger, ?array $facilities = null )
 	{
 		$this->logger = $logger;
 		$this->facilities = $facilities;
