@@ -59,6 +59,7 @@ class Monolog implements Iface
 					$message = json_encode( $message );
 				}
 
+				// @phpstan-ignore argument.type, argument.type
 				$this->logger->log( $this->getLogLevel( $priority ), $message );
 			}
 		}
